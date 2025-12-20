@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@import "tailwindcss/preflight";
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    scroll-behavior: smooth;
+  }
+}

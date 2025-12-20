@@ -1,0 +1,225 @@
+/* Calendar Page - Purple Theme */
+.calendarPage {
+  padding: 24px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.calendarHeader {
+  margin-bottom: 24px;
+}
+
+.calendarTitle {
+  font-size: 32px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 8px 0;
+}
+
+.calendarContainer {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.15),
+              0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+  position: relative;
+  overflow: hidden;
+}
+
+.calendarContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+}
+
+/* FullCalendar Custom Styling */
+:global(.fc) {
+  font-family: inherit;
+}
+
+/* Header buttons */
+:global(.fc .fc-button-primary) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 8px 16px !important;
+  font-weight: 600 !important;
+  text-transform: capitalize !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3) !important;
+}
+
+:global(.fc .fc-button-primary:hover) {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4) !important;
+}
+
+:global(.fc .fc-button-primary:active) {
+  transform: translateY(0) !important;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3) !important;
+}
+
+:global(.fc .fc-button-primary:disabled) {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+}
+
+/* Active button */
+:global(.fc .fc-button-active) {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%) !important;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4) inset !important;
+}
+
+/* Title */
+:global(.fc .fc-toolbar-title) {
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Day headers */
+:global(.fc .fc-col-header-cell) {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%) !important;
+  border-color: rgba(102, 126, 234, 0.2) !important;
+  padding: 12px 8px !important;
+}
+
+:global(.fc .fc-col-header-cell-cushion) {
+  color: #667eea !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  font-size: 12px !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* Day cells */
+:global(.fc .fc-daygrid-day) {
+  border-color: rgba(102, 126, 234, 0.15) !important;
+  transition: background-color 0.2s ease !important;
+}
+
+:global(.fc .fc-daygrid-day:hover) {
+  background-color: rgba(102, 126, 234, 0.05) !important;
+}
+
+:global(.fc .fc-daygrid-day-number) {
+  color: #4a5568 !important;
+  font-weight: 600 !important;
+  padding: 8px !important;
+}
+
+/* Today highlight */
+:global(.fc .fc-day-today) {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.05) 100%) !important;
+}
+
+:global(.fc .fc-day-today .fc-daygrid-day-number) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: white !important;
+  border-radius: 50% !important;
+  width: 32px !important;
+  height: 32px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 4px !important;
+}
+
+/* Events */
+:global(.fc-event) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 4px 8px !important;
+  margin: 2px 4px !important;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3) !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer !important;
+}
+
+:global(.fc-event:hover) {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4) !important;
+}
+
+:global(.fc-event-title) {
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  color: white !important;
+}
+
+:global(.fc-event-time) {
+  font-size: 11px !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Time grid */
+:global(.fc .fc-timegrid-slot) {
+  height: 3em !important;
+  border-color: rgba(102, 126, 234, 0.1) !important;
+}
+
+:global(.fc .fc-timegrid-axis-cushion) {
+  color: #667eea !important;
+  font-weight: 600 !important;
+}
+
+/* Scrollbar */
+:global(.fc-scroller::-webkit-scrollbar) {
+  width: 8px;
+  height: 8px;
+}
+
+:global(.fc-scroller::-webkit-scrollbar-track) {
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 4px;
+}
+
+:global(.fc-scroller::-webkit-scrollbar-thumb) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 4px;
+}
+
+:global(.fc-scroller::-webkit-scrollbar-thumb:hover) {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+/* More link */
+:global(.fc .fc-more-link) {
+  color: #667eea !important;
+  font-weight: 600 !important;
+}
+
+:global(.fc .fc-more-link:hover) {
+  color: #764ba2 !important;
+  text-decoration: underline !important;
+}
+
+/* Popover */
+:global(.fc .fc-popover) {
+  background: rgba(255, 255, 255, 0.98) !important;
+  border: 1px solid rgba(102, 126, 234, 0.2) !important;
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.2) !important;
+  border-radius: 12px !important;
+}
+
+:global(.fc .fc-popover-header) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: white !important;
+  padding: 12px !important;
+  border-radius: 12px 12px 0 0 !important;
+}

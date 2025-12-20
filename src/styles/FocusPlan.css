@@ -1,0 +1,131 @@
+/* -----------------------------------
+   THEME VARIABLES
+-----------------------------------*/
+:root {
+  --bg: #f3f4f6;
+  --card-bg: #ffffffcc;
+  --text: #1a1a1a;
+  --accent: #4f46e5;
+  --shadow: rgba(0, 0, 0, 0.08);
+  --input-bg: #fff;
+}
+
+[data-theme="dark"] {
+  --bg: #0f0f11;
+  --card-bg: #1a1a1dcc;
+  --text: #f6f7f8;
+  --accent: #6366f1;
+  --shadow: rgba(0, 0, 0, 0.35);
+  --input-bg: #232325;
+}
+
+/* -----------------------------------
+   PAGE CONTAINER
+-----------------------------------*/
+.focus-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  background: var(--bg);
+  min-height: 92vh;
+}
+
+/* -----------------------------------
+   CARD
+-----------------------------------*/
+.focus-card {
+  width: 100%;
+  max-width: 600px;
+  background: var(--card-bg);
+  backdrop-filter: blur(15px);
+  padding: 28px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px var(--shadow);
+  animation: fadeUp 0.5s ease;
+}
+
+.focus-card h2 {
+  margin-bottom: 20px;
+  color: var(--text);
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+/* -----------------------------------
+   TEXTAREA
+-----------------------------------*/
+.focus-card textarea {
+  width: 100%;
+  padding: 14px;
+  background: var(--input-bg);
+  border-radius: 14px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  resize: vertical;
+  color: var(--text);
+  transition: 0.25s ease;
+}
+
+.focus-card textarea:focus {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+/* -----------------------------------
+   GENERATE BUTTON
+-----------------------------------*/
+.generate-btn {
+  width: 100%;
+  padding: 14px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: 0.3s ease;
+}
+
+.generate-btn:hover {
+  background: #4338ca;
+  transform: translateY(-3px);
+}
+
+.generate-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* -----------------------------------
+   PLAN OUTPUT
+-----------------------------------*/
+.plan-output {
+  margin-top: 20px;
+  background: var(--input-bg);
+  padding: 18px;
+  border-radius: 16px;
+  border: 1px solid #ccc;
+  white-space: pre-wrap;
+  color: var(--text);
+  font-size: 15px;
+  box-shadow: 0 5px 15px var(--shadow);
+  animation: fadeUp 0.4s ease;
+}
+
+/* -----------------------------------
+   ANIMATIONS
+-----------------------------------*/
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

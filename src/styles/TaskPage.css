@@ -1,0 +1,192 @@
+/* -------------------------------
+   🌗 DARK / LIGHT MODE
+--------------------------------*/
+:root {
+  --bg: #f5f7fa;
+  --card-bg: #ffffffcc;
+  --text: #222;
+  --accent: #4f46e5;
+  --input-bg: #fff;
+  --shadow: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] {
+  --bg: #0f0f11;
+  --card-bg: #1a1a1d99;
+  --text: #f6f7f8;
+  --accent: #6366f1;
+  --input-bg: #222;
+  --shadow: rgba(0, 0, 0, 0.25);
+}
+
+/* -------------------------------
+   📱 PAGE CONTAINER
+--------------------------------*/
+body {
+  background: var(--bg);
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  transition: background 0.3s ease;
+}
+
+.task-page {
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+h2 {
+  color: var(--text);
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  animation: fadeIn 0.6s ease;
+}
+
+/* -------------------------------
+   📝 TASK INPUT FORM
+--------------------------------*/
+.task-form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 25px;
+  animation: fadeUp 0.5s ease;
+}
+
+.task-form input {
+  flex: 1;
+  padding: 12px 16px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: var(--input-bg);
+  color: var(--text);
+  transition: 0.3s;
+}
+
+.task-form input:focus {
+  border-color: var(--accent);
+  outline: none;
+  transform: translateY(-2px);
+}
+
+.task-form button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.task-form button:hover {
+  background: #4338ca;
+  transform: translateY(-2px);
+}
+
+/* -------------------------------
+   📋 TASK LIST
+--------------------------------*/
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Applies to each TaskItem wrapper */
+.task-card {
+  background: var(--card-bg);
+  padding: 16px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px var(--shadow);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: fadeUp 0.4s ease;
+  transition: transform 0.2s;
+}
+
+.task-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Task title */
+.task-card-title {
+  color: var(--text);
+  font-size: 17px;
+  font-weight: 500;
+}
+
+/* -------------------------------
+   🛠 ACTION BUTTONS (edit/delete)
+--------------------------------*/
+.task-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.task-btn {
+  padding: 8px 14px;
+  font-size: 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-edit {
+  background: #3b82f6;
+  color: white;
+}
+
+.btn-edit:hover {
+  background: #2563eb;
+}
+
+.btn-delete {
+  background: #ef4444;
+  color: white;
+}
+
+.btn-delete:hover {
+  background: #dc2626;
+}
+
+/* -------------------------------
+   📱 RESPONSIVE DESIGN
+--------------------------------*/
+@media (max-width: 600px) {
+  .task-form {
+    flex-direction: column;
+  }
+
+  .task-actions {
+    flex-direction: column;
+  }
+
+  .task-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+
+/* -------------------------------
+   🎬 ANIMATIONS
+--------------------------------*/
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
