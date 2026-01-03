@@ -1,21 +1,9 @@
 import React, { useEffect, useState } from "react";
+import API from "../../api/axiosConfig";
 
-// --- Mocking Dependencies for Single-File Environment ---
-// 1. Mock Data Service
-const mockStats = {
-    totalTasks: 125,
-    completedTasks: 98,
-    completionRate: 78.4,
-};
-
+// Service to fetch user analytics
 const getAnalyticsService = () => {
-    console.log("[MOCK] Fetching analytics data...");
-    // Simulate API delay
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(mockStats);
-        }, 1000);
-    });
+    return API.get("/analytics").then(res => res.data);
 };
 
 // 2. Mock Lucide Icons (as SVG Components)
