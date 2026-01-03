@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from '../pages/user/Tasks.module.css';
 
 type Props = { tasks?: any[] };
