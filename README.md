@@ -4,7 +4,7 @@ A modern React + TypeScript + Vite application for AI-assisted task management, 
 
 ## Overview
 
-- Social OAuth: Google, Facebook, GitHub (unified redirect flow)
+- Social OAuth: Google, firebase, GitHub (unified redirect flow)
 - Role-based routing with admin auto-redirect
 - Task management UI with proper date input handling
 - PDF export (iframe-based, popup-safe)
