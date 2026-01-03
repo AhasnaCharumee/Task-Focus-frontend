@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import AIGoalBreaker from '../../components/ai/AIGoalBreaker';
 import SentimentTracker from '../../components/ai/SentimentTracker';
 import HabitTracker from '../../components/ai/HabitTracker';
