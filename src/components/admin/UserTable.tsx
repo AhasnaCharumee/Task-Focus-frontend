@@ -1,5 +1,3 @@
-import React from "react";
-
 type UserRow = { _id:string; name:string; email:string; role?:string };
 export default function UserTable({users, onDelete}:{users:UserRow[]; onDelete:(id:string)=>void}){
   return (

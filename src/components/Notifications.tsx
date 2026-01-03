@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { listNotifications, markNotificationRead } from '../services/notificationService';
 import type { Notification } from '../services/notificationService';
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getAllUsersService, deleteUserService } from "../../services/adminService";
 import UserTable from "../../components/admin/UserTable";
 

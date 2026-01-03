@@ -1,4 +1,3 @@
-import React from "react";
 type Props = { page:number; totalPages:number; onPageChange:(p:number)=>void };
 export default function Pagination({page,totalPages,onPageChange}:Props){
   const pages = Array.from({length: totalPages}, (_,i)=>i+1);

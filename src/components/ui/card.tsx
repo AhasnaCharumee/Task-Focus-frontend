@@ -1,5 +1,3 @@
-import React from "react";
-
 export const Card = ({ className = "", children }: any) => {
   return (
     <div
