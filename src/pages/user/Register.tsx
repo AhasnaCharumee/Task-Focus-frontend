@@ -1,7 +1,5 @@
-import { useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
-import { FaFacebookF, FaGithub } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 
 // Google Icon Component
 const GoogleIcon = (props: any) => (
@@ -188,82 +186,39 @@ const styles = `
 
 // --------------- FINAL REGISTER PAGE -----------------
 export default function Register() {
-  // Context available in scope for potential use
-  useContext(AuthContext);
-
-  // ---------- FACEBOOK SIGNUP ----------
-  const handleFacebookSignup = async () => {
-    try {
-      const FACEBOOK_APP_ID = import.meta.env.VITE_FACEBOOK_APP_ID;
-      const API_URL = import.meta.env.VITE_API_URL;
-      
-      console.log("🔵 Facebook Signup - Config:", { FACEBOOK_APP_ID, API_URL });
-      
-      if (!FACEBOOK_APP_ID) {
-        alert("Facebook App ID not configured");
-        return;
-      }
-      
-      if (!API_URL) {
-        alert("API URL not configured");
-        return;
-      }
-
-      // Redirect to backend Facebook auth endpoint
-      const redirectUrl = `${API_URL}/auth/facebook`;
-      console.log("🔵 Redirecting to:", redirectUrl);
-      window.location.href = redirectUrl;
-    } catch (err: any) {
-      console.error("🔵 Facebook signup error:", err);
-      alert(err?.message || "Facebook signup error - check console for details");
-    }
-  };
-
-  // ---------- GITHUB SIGNUP ----------
-  const handleGitHubSignup = async () => {
-    try {
-      const API_URL = import.meta.env.VITE_API_URL;
-      
-      console.log("🟣 GitHub Signup - Config:", { API_URL });
-      
-      if (!API_URL) {
-        alert("API URL not configured");
-        return;
-      }
-
-      // Redirect to backend GitHub auth endpoint
-      const redirectUrl = `${API_URL}/auth/github`;
-      console.log("🟣 Redirecting to:", redirectUrl);
-      window.location.href = redirectUrl;
-    } catch (err: any) {
-      console.error("🟣 GitHub signup error:", err);
-      alert(err?.message || "GitHub signup error - check console for details");
-    }
-  };
-
-  // ---------- GOOGLE SIGNUP ----------
+  // 🟡 Google Signup Handler
   const handleGoogleSignup = async () => {
     try {
       const API_URL = import.meta.env.VITE_API_URL;
       
-      console.log("🟡 Google Signup - Config:", { API_URL });
-      
       if (!API_URL) {
         alert("API URL not configured");
         return;
       }
 
-      // Redirect to backend Google auth endpoint (OAuth redirect flow)
-      const redirectUrl = `${API_URL}/auth/google`;
-      console.log("🟡 Redirecting to:", redirectUrl);
-      window.location.href = redirectUrl;
+      window.location.href = `${API_URL}/auth/google`;
     } catch (err: any) {
       console.error("🟡 Google signup error:", err);
       alert(err?.message || "Google signup error - check console for details");
     }
   };
 
+  // 🟣 GitHub Signup Handler
+  const handleGitHubSignup = async () => {
+    try {
+      const API_URL = import.meta.env.VITE_API_URL;
+      
+      if (!API_URL) {
+        alert("API URL not configured");
+        return;
+      }
 
+      window.location.href = `${API_URL}/auth/github`;
+    } catch (err: any) {
+      console.error("🟣 GitHub signup error:", err);
+      alert(err?.message || "GitHub signup error - check console for details");
+    }
+  };
 
   return (
     <div className="register-container">
@@ -276,6 +231,14 @@ export default function Register() {
 
       <div className="register-card animate-card">
         <h2 className="title">Create Your Account</h2>
+
+        <div style={{ 
+          textAlign: "center",
+          marginBottom: "2rem",
+          color: "#6b7280"
+        }}>
+          <p>Sign up with your social account</p>
+        </div>
 
         {/* GOOGLE SIGN UP */}
         <button
@@ -311,42 +274,6 @@ export default function Register() {
         >
           <GoogleIcon style={{ fontSize: "1.1rem" }} />
           <span>Sign Up with Google</span>
-        </button>
-
-        {/* FACEBOOK SIGN UP */}
-        <button
-          type="button"
-          onClick={handleFacebookSignup}
-          style={{
-            width: "100%",
-            padding: "0.75rem",
-            backgroundColor: "#FFFFFF",
-            color: "#1877F2",
-            border: "2px solid #1877F2",
-            borderRadius: "0.75rem",
-            fontSize: "1rem",
-            fontWeight: "600",
-            cursor: "pointer",
-            transition: "all 0.3s ease",
-            marginTop: "1rem",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "8px",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = "#F0F2F5";
-            e.currentTarget.style.transform = "translateY(-2px)";
-            e.currentTarget.style.boxShadow = "0 6px 14px rgba(24,119,242,0.2)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = "#FFFFFF";
-            e.currentTarget.style.transform = "translateY(0)";
-            e.currentTarget.style.boxShadow = "none";
-          }}
-        >
-          <FaFacebookF style={{ fontSize: "1.1rem" }} />
-          <span>Sign Up with Facebook</span>
         </button>
 
         {/* GITHUB SIGN UP */}

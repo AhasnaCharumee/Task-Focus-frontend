@@ -4,7 +4,7 @@ A modern React + TypeScript + Vite application for AI-assisted task management, 
 
 ## Overview
 
-- Social OAuth: Google, firebase, GitHub (unified redirect flow)
+- **Social OAuth**: Google and GitHub (unified redirect flow)
 - Role-based routing with admin auto-redirect
 - Task management UI with proper date input handling
 - PDF export (iframe-based, popup-safe)
@@ -97,7 +97,7 @@ Below are step-by-step guides for three popular providers. The build configurati
 
 ## OAuth Configuration Checklist
 
-- Frontend domain authorized in each provider (Google/Facebook/GitHub)
+- Frontend domain authorized in each provider (Google/GitHub)
 - Redirect URI points to `/auth-callback` (or provider-specific callback you expose)
 - Backend CORS allows your deployed domain with `credentials: true`
 

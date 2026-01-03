@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaFacebookF, FaGithub } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 
 // Google Icon Component
 const GoogleIcon = (props: any) => (
@@ -142,34 +142,6 @@ body {
 
 export default function Login() {
 
-  // 🔥 Facebook Login Handler
-  const handleFacebookLogin = async () => {
-    try {
-      const FACEBOOK_APP_ID = import.meta.env.VITE_FACEBOOK_APP_ID;
-      const API_URL = import.meta.env.VITE_API_URL;
-      
-      console.log("🔵 Facebook Login - Config:", { FACEBOOK_APP_ID, API_URL });
-      
-      if (!FACEBOOK_APP_ID) {
-        alert("Facebook App ID not configured");
-        return;
-      }
-      
-      if (!API_URL) {
-        alert("API URL not configured");
-        return;
-      }
-
-      // Redirect to backend Facebook auth endpoint
-      const redirectUrl = `${API_URL}/auth/facebook`;
-      console.log("🔵 Redirecting to:", redirectUrl);
-      window.location.href = redirectUrl;
-    } catch (err: any) {
-      console.error("🔵 Facebook login error:", err);
-      alert(err?.message || "Facebook login error - check console for details");
-    }
-  };
-
   // 🔥 GitHub Login Handler
   const handleGitHubLogin = async () => {
     try {
@@ -227,6 +199,14 @@ export default function Login() {
       <div className="auth-card">
         <h2 className="title">Login to your Account</h2>
 
+        <div style={{ 
+          textAlign: "center",
+          marginBottom: "2rem",
+          color: "#6b7280"
+        }}>
+          <p>Sign in with your social account</p>
+        </div>
+
         {/* GOOGLE SIGN IN */}
         <div style={{ marginTop: "1rem", textAlign: "center" }}>
           <button
@@ -261,43 +241,6 @@ export default function Login() {
           >
             <GoogleIcon style={{ fontSize: "1.1rem" }} />
             <span>Login with Google</span>
-          </button>
-        </div>
-
-        {/* FACEBOOK SIGN IN */}
-        <div style={{ marginTop: "1rem", textAlign: "center" }}>
-          <button
-            type="button"
-            onClick={handleFacebookLogin}
-            style={{
-              width: "100%",
-              padding: "0.75rem",
-              backgroundColor: "#FFFFFF",
-              color: "#1877F2",
-              border: "2px solid #1877F2",
-              borderRadius: "0.75rem",
-              fontSize: "1rem",
-              fontWeight: "600",
-              cursor: "pointer",
-              transition: "all 0.3s ease",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "8px",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "#F0F2F5";
-              e.currentTarget.style.transform = "translateY(-2px)";
-              e.currentTarget.style.boxShadow = "0 6px 14px rgba(24,119,242,0.2)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = "#FFFFFF";
-              e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow = "none";
-            }}
-          >
-            <FaFacebookF style={{ fontSize: "1.1rem" }} />
-            <span>Login with Facebook</span>
           </button>
         </div>
 
