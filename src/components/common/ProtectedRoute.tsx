@@ -20,11 +20,17 @@ const ProtectedRoute: React.FC<ProtectedProps> = ({ children, requiredRole }) =>
     return <Navigate to="/login" replace />;
   }
 
+  // Extract actual user role (handle nested structure: user.user.role or user.role)
+  const userRole = (user as any)?.user?.role || (user as any)?.role || "user";
+  
   // Role mismatch → redirect to unauthorized page
-  if (requiredRole && user.role !== requiredRole) {
+  if (requiredRole && userRole !== requiredRole) {
+    console.log(`❌ Role mismatch: required="${requiredRole}", actual="${userRole}"`);
     return <Navigate to="/unauthorized" replace />;
   }
 
+  console.log(`✅ Role check passed: required="${requiredRole}", actual="${userRole}"`);
+  
   // Everything OK → render the protected component
   return <>{children}</>;
 };
