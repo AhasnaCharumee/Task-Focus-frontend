@@ -35,7 +35,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     else localStorage.removeItem("user");
   }, [user]);
 
-  // If there's a token but no user (page refresh), validate it
+  // If there's a token but no user (page refresh or OAuth callback), validate it
   useEffect(() => {
     const token = localStorage.getItem("token");
     const storedUser = localStorage.getItem("user");
@@ -65,7 +65,24 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       }
     }
     
-    // Only validate with backend if we have token but no stored user
+    // Decode JWT directly if token exists but no stored user
+    try {
+      const payload = JSON.parse(atob(token.split(".")[1]));
+      const decodedUser: User = {
+        id: payload.id || payload.sub || "unknown",
+        email: payload.email || "unknown",
+        name: payload.name || payload.email || "User",
+        role: payload.role || "user",
+      };
+      console.log("✅ User decoded from JWT token:", decodedUser);
+      dispatch(setUserAction(decodedUser));
+      dispatch(setLoading(false));
+      return;
+    } catch (err) {
+      console.warn("Failed to decode JWT from token:", err);
+    }
+    
+    // Fallback: validate with backend if JWT decode fails
     dispatch(setLoading(true));
     profileService()
       .then((u) => {
