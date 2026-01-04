@@ -17,7 +17,7 @@ export default function AuthCallback() {
 
     // Optional: derive role from JWT if present to direct admin vs user
     const role = getRoleFromToken(token);
-    if (role === "admin") navigate("/admin/dashboard", { replace: true });
+    if (role === "admin") navigate("/admin", { replace: true });
     else navigate("/tasks", { replace: true });
   }, [navigate, params]);
 

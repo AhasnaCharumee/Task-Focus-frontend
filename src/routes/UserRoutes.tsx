@@ -14,6 +14,7 @@ import Profile from "../pages/user/Profile";
 import Feedback from "../pages/user/Feedback";
 import NotificationsPage from "../components/Notifications";
 import NotFound from "../pages/error/NotFound";
+import Unauthorized from "../pages/error/Unauthorized";
 // Legal pages
 import PrivacyPolicy from "../pages/legal/PrivacyPolicy";
 import TermsOfService from "../pages/legal/TermsOfService";
@@ -33,11 +34,13 @@ export default function UserRoutes() {
       <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
       <Route path="/auth-callback" element={<AuthCallback />} />
       <Route path="/auth/github/callback" element={<AuthCallback />} />
+      <Route path="/unauthorized" element={<Unauthorized />} />
 
       {/* Public: Legal */}
       <Route path="/legal/privacy" element={<PublicRoute><PrivacyPolicy /></PublicRoute>} />
       <Route path="/legal/terms" element={<PublicRoute><TermsOfService /></PublicRoute>} />
       <Route path="/legal/cookies" element={<PublicRoute><CookiePolicy /></PublicRoute>} />
+      
       {/* Alternate paths used in footer */}
       <Route path="/pages/PrivacyPolicy" element={<PublicRoute><PrivacyPolicy /></PublicRoute>} />
       <Route path="/pages/TermsOfService" element={<PublicRoute><TermsOfService /></PublicRoute>} />
@@ -48,6 +51,7 @@ export default function UserRoutes() {
       <Route path="/support/faq" element={<PublicRoute><FAQ /></PublicRoute>} />
       <Route path="/support/contact" element={<PublicRoute><ContactSupport /></PublicRoute>} />
       <Route path="/support/roadmap" element={<PublicRoute><Roadmap /></PublicRoute>} />
+      
       {/* Alternate paths used in footer */}
       <Route path="/pages/HelpCenter" element={<PublicRoute><HelpCenter /></PublicRoute>} />
       <Route path="/pages/FAQ" element={<PublicRoute><FAQ /></PublicRoute>} />
