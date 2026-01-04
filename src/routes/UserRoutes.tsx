@@ -3,10 +3,7 @@ import PublicRoute from "../components/common/PublicRoute";
 import UserLayout from "../layout/UserLayout";
 import Login from "../pages/user/Login";
 import Register from "../pages/user/Register";
-import FacebookCallback from "../pages/user/FacebookCallback";
-import TokenDebugPage from "../pages/user/TokenDebugPage";
-import FacebookManualTest from "../pages/user/FacebookManualTest";
-import DebugFacebook from "../pages/user/DebugFacebook";
+import AuthCallback from "../pages/user/AuthCallback";
 import Landing from "../pages/Landing";
 import Tasks from "../pages/user/Tasks";
 import FocusPlan from "../pages/user/FocusPlan";
@@ -34,11 +31,8 @@ export default function UserRoutes() {
       <Route path="/" element={<PublicRoute><Landing /></PublicRoute>} />
       <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
       <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
-      <Route path="/debug/facebook" element={<DebugFacebook />} />
-      <Route path="/debug/token" element={<TokenDebugPage />} />
-      <Route path="/debug/manual-test" element={<FacebookManualTest />} />
-      <Route path="/auth/facebook/callback" element={<FacebookCallback />} />
-      <Route path="/auth-callback" element={<FacebookCallback />} />
+      <Route path="/auth-callback" element={<AuthCallback />} />
+      <Route path="/auth/github/callback" element={<AuthCallback />} />
 
       {/* Public: Legal */}
       <Route path="/legal/privacy" element={<PublicRoute><PrivacyPolicy /></PublicRoute>} />
