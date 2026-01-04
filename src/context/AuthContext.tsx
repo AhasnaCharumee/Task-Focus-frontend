@@ -40,14 +40,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const token = localStorage.getItem("token");
     const storedUser = localStorage.getItem("user");
     
+    console.log("🔍 AuthContext mount - checking token:", !!token ? "✅ Found" : "❌ Missing");
+    
     // If no token, stop loading
     if (!token) {
+      console.log("⚠️  No token found, stopping");
       dispatch(setLoading(false));
       return;
     }
     
     // If user already in Redux state, stop loading
     if (user) {
+      console.log("✅ User already in Redux state:", user);
       dispatch(setLoading(false));
       return;
     }
@@ -67,22 +71,31 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     
     // Decode JWT directly if token exists but no stored user
     try {
-      const payload = JSON.parse(atob(token.split(".")[1]));
+      const parts = token.split(".");
+      console.log("🔐 JWT parts:", parts.length);
+      if (parts.length !== 3) {
+        throw new Error(`Invalid JWT format: expected 3 parts, got ${parts.length}`);
+      }
+      
+      const payload = JSON.parse(atob(parts[1]));
+      console.log("📋 JWT Payload:", payload);
+      
       const decodedUser: User = {
         id: payload.id || payload.sub || "unknown",
         email: payload.email || "unknown",
         name: payload.name || payload.email || "User",
-        role: payload.role || "user",
+        role: (payload.role || "user") as "admin" | "user" | string,
       };
       console.log("✅ User decoded from JWT token:", decodedUser);
       dispatch(setUserAction(decodedUser));
       dispatch(setLoading(false));
       return;
     } catch (err) {
-      console.warn("Failed to decode JWT from token:", err);
+      console.error("❌ Failed to decode JWT from token:", err);
     }
     
     // Fallback: validate with backend if JWT decode fails
+    console.log("📡 Falling back to backend validation");
     dispatch(setLoading(true));
     profileService()
       .then((u) => {
